@@ -1,36 +1,29 @@
-package com.thinhbo.microservice.currencyexchangeservice;
+package com.thinhbo.microservice.currencyconversionservice;
 
 import java.math.BigDecimal;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+public class CurrencyConversion {
 
-@Entity
-public class CurrencyExchange {
-
-    @Id
     private Long id;
-
-    @Column(name = "currency_from")
     private String from;
-
-    @Column(name = "currency_to")
     private String to;
-
     private BigDecimal conversionMultiple;
+    private BigDecimal quantity;
+    private BigDecimal totalCalculatedAmount;
     private String environment;
 
-    public CurrencyExchange() {
-
+    public CurrencyConversion() {
     }
 
-    public CurrencyExchange(Long id, String from, String to, BigDecimal conversionMultiple) {
-        super();
+    public CurrencyConversion(Long id, String from, String to, BigDecimal conversionMultiple, BigDecimal quantity,
+            BigDecimal totalCalculatedAmount, String environment) {
         this.id = id;
         this.from = from;
         this.to = to;
         this.conversionMultiple = conversionMultiple;
+        this.quantity = quantity;
+        this.totalCalculatedAmount = totalCalculatedAmount;
+        this.environment = environment;
     }
 
     public Long getId() {
@@ -63,6 +56,22 @@ public class CurrencyExchange {
 
     public void setConversionMultiple(BigDecimal conversionMultiple) {
         this.conversionMultiple = conversionMultiple;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getTotalCalculatedAmount() {
+        return totalCalculatedAmount;
+    }
+
+    public void setTotalCalculatedAmount(BigDecimal totalCalculatedAmount) {
+        this.totalCalculatedAmount = totalCalculatedAmount;
     }
 
     public String getEnvironment() {
